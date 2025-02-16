@@ -2,15 +2,25 @@ import './App.scss';
 import { MoviesList } from './components/MoviesList';
 import { NewMovie } from './components/NewMovie';
 import moviesFromServer from './api/movies.json';
+import { Movie } from './types/Movie';
+import  { useState } from 'react';
 
 export const App = () => {
+
+  const movieList = moviesFromServer.map((movie: Movie) => movie);
+  const [newMovie , setNewMovie] = useState(movieList)
+  const addNewMovie = (newMovie: Movie) => {
+    const newMovieObj = { ...newMovie };
+    setNewMovie((currentMovies) => [newMovieObj, ...currentMovies]);
+  };
+  {console.log(newMovie , 'ЧТО ТУТ ТАКОЕ')}
   return (
     <div className="page">
       <div className="page-content">
-        <MoviesList movies={moviesFromServer} />
+        <MoviesList movies={newMovie} />
       </div>
       <div className="sidebar">
-        <NewMovie /* onAdd={(movie) => {}} */ />
+        <NewMovie  onAdd={addNewMovie}  />
       </div>
     </div>
   );
