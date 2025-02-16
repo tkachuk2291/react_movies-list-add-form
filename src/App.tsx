@@ -13,7 +13,6 @@ export const App = () => {
     const newMovieObj = { ...newMovie };
     setNewMovie((currentMovies) => [newMovieObj, ...currentMovies]);
   };
-  {console.log(newMovie , 'ЧТО ТУТ ТАКОЕ')}
   return (
     <div className="page">
       <div className="page-content">
