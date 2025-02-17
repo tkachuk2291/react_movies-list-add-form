@@ -11,7 +11,7 @@ export const App = () => {
   const [newMovie , setNewMovie] = useState(movieList)
   const addNewMovie = (newMovie: Movie) => {
     const newMovieObj = { ...newMovie };
-    setNewMovie((currentMovies) => [newMovieObj, ...currentMovies]);
+    setNewMovie((currentMovies) => [...currentMovies, newMovieObj]);
   };
   return (
     <div className="page">
